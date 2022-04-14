@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog_detail</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/main.css') }}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+   
+   
+</head>
+<body>
+    <div class="navigation">
+        <div class="navbar navbar-expand-md bg-light navbar-light">
+            <nav class="container" >
+              <a class="navbar-brand" href="#"><img src="{{url_for('static',filename = 'image/logo.png')}}" class="logo" alt=""></a>
+              <div class="navbar-brand">
+                <ul class="navbar-nav ml-auto">
+                  <li class="nav-item">
+                    <a class="nav-link" href="/index">Trang Chủ</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/post">blog</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/dinhduong">Dinh Dưỡng Khoa Học</a>
+                  </li> 
+                  <li class="nav-item">
+                    <a class="nav-link" href="/detect">Phát Hiện Bệnh</a>
+                  </li> 
+                  <li class="nav-item">
+                    <a class="nav-link" href="/login">Sign in</a>
+                  </li> 
+                  <li class="nav-item">
+                    <a class="nav-link" href="/signup">Sign up</a>
+                  </li> 
+                </ul>
+              </div>  
+            </nav>
+        </div>
+    </div>  
+
+    <div class="blog_detail">
+      <div class="container">
+        <div class="col-sm-12 col-lg-12">
+    
+          <div class="blog_detail_container">
+            
+            <div class="blog_show">
+                
+              <div class="blog_show_content">
+                <div class="blog_show_title">
+                  <br>
+                  ẢNH HƯỞNG CỦA THỜI TIẾT ĐẾN NÔNG NGHIỆP
+                </div>
+                <div class="blog_show_desc">
+                  
+                  Sự hiểu biết về giống bệnh cây trồng và biến đổi khí hậu là vô cùng quan trọng, tuy nhiên sự hiểu biết của con người vẫn còn hạn hẹp. 
+                                    Biến đổi khí hậu không chỉ gây ra các hiện tượng thời tiết cực đoan như mưa đá, 
+                                    hạn hán, lũ lụt... mà nó còn ảnh hưởng nặng nề đến lĩnh vực nông nghiệp, 
+                                    có thể còn dẫn đến mất mùa hoàn toàn. Biến đổi khí hậu đã và đăng tác động mạnh mẽ
+                                    đến ngành nông nghiệp, gây ra tình trạng hạn hán và sâu bệnh, gây áp lực cho ngành trồng trọt nói chung 
+                                    và ngành nông nghiệp nói chung <br>
+                                    <br>
+                                  </div>
+                <div class="blog_show_img">
+                  <img src="{{url_for('static',filename = 'image/bien-doi-khi-hau.jpg')}}" >
+                </div>
+                <br>
+                Vấn đề này thật sự gây khó khăn cho nhiều nhà nghiên cứu nhưng không phải không có cách giải quyết. Trước hết, phản ứng của tất cả các loại cây trồng quan trọng đối với các bệnh khác nhau cần được nghiên cứu trong các điều kiện khí hậu dự kiến khác nhau. Tiếp theo, các gen cho phép kháng bệnh trọng trong tương lai cần phải được theo dõi. Cây trồng hiện đại đã được sắp xếp hợp lý bởi lựa chọn nhân tạo là tuyệt vời để phát triển ngày nay. Điều này có nghĩa là họ có các gen mà họ cần để phát triển khi phải đối mặt với những thách thức về mầm bệnh trong các điều kiện thời tiết khó đoán trước.
+                Những cây trồng như vậy sẽ đỡ bị tổn thương trước những thay đổi trong môi trường của chúng.
+                <br>
+                  <div class="blog_show_img">
+                    <img src="{{url_for('static',filename = 'image/28-5-19.jpg')}}" >
+                  </div>
+                   Bên cạnh đó, bằng chứng cho thấy những thay đổi về nhiệt độ và nguồn nước cũng làm thay đổi phản ứng miễn dịch của thực vật. André Velásquez và Sheng Yang He, tại Đại học bang Michigan, đã viết một bài đánh giá cho rằng mặc dù một số cây trồng có giá trị, chẳng hạn như khoai tây và gạo, ít bị bệnh hơn khi độ ẩm tăng lên, điều này không thể áp dụng cho mọi loại thực vật. Độ ẩm cao, nói chung, ủng hộ sự lây lan của các bệnh thực vật. Tương tự, nếu nhiệt độ tăng sẽ kích thích phát triển virut ringpot 
+                   ở quả đu đủ trong khi sâu bệnh ở khoai tây lại phát triển ở nhiệt độ thấp.<br>
+                   
+                   <br>
+                   <br>
+                   <br>
+                   <br>
+      
+                    
+            </div>
+            </div>
+      
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="location">
+        <div class="container">
+          
+              <div class="footer__contact">
+                <div class="body_footter">
+                <div class="left">
+                <p class="footer__contact-title">LIÊN HỆ VỚI CHÚNG TÔI</p>
+                <ul class="footer__contact-list">
+                  <li >
+                    <a class="footer__contact-address"> Tầng 6, toà nhà 254 Nguyễn Văn Linh, P.Thạch Gián, Q. Thanh
+                      Khê, Đà Nẵng</a>
+                  </li>
+                  <li >
+                      <a class="footer__contact-phone">(07) 6672 3591 </a>
+                    </li>
+                    <li >
+                      <a class="footer__contact-mail">
+                        lekhoa657@gmail.com
+                      </a>
+                    </li>
+                  </div>
+                
+                 <div class="right">
+                <p class="footer__contact-title">THÔNG TIN</p>
+                  <ul class="footer__shipping">
+                    <li>
+                      <a>Về chúng tôi</a>
+                    </li>
+                    <li>
+                      <a>Điều khoản &amp; Điều kiện</a>
+                    </li>
+                    <li>
+                      <a>Chính sách riêng tư</a>
+                    </li>
+                    
+                  </ul>
+                   </div>
+                   <div class="center">
+                    <p class="footer__contact-title">CHUYÊN MUC</p>
+                    <ul class="footer__center">
+                      <li>
+                        <a>hỏi đáp</a>
+                      </li>
+                      <li>
+                        <a class="khoa" href="">
+                          <i class="fab fa-facebook"></i>
+                        </a>
+                      </li>
+                      
+                      
+                    </ul>
+                  
+                   </div>
+              </div>
+                  <div class="col-sm-12 col-md-8">
+                    <p class="footer__extend-text">
+                      Copyright © Your Website 2022
+                    </p>
+                  </div>
+                  <div className="col-sm-12 col-md-4">
+                    <div className="footer__extend-img d-flex justify-content-end">
+                      <img src={footer_extend} alt="" />
+                    </div>
+              </div>
+              
+                  
+                </div>
+              </div>  
+              
+             
+          </div> 
+    
+</body>
+</html>

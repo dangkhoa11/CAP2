@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog_detail</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/main.css') }}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+   
+   
+</head>
+<body>
+    <div class="navigation">
+        <div class="navbar navbar-expand-md bg-light navbar-light">
+            <nav class="container" >
+              <a class="navbar-brand" href="#"><img src="{{url_for('static',filename = 'image/logo.png')}}" class="logo" alt=""></a>
+              <div class="navbar-brand">
+                <ul class="navbar-nav ml-auto">
+                  <li class="nav-item">
+                    <a class="nav-link" href="/index">Trang Chủ</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/post">blog</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/dinhduong">Dinh Dưỡng Khoa Học</a>
+                  </li> 
+                  <li class="nav-item">
+                    <a class="nav-link" href="/detect">Phát Hiện Bệnh</a>
+                  </li> 
+                  <li class="nav-item">
+                    <a class="nav-link" href="/login">Sign in</a>
+                  </li> 
+                  <li class="nav-item">
+                    <a class="nav-link" href="/signup">Sign up</a>
+                  </li> 
+                </ul>
+              </div>  
+            </nav>
+        </div>
+    </div>  
+
+    <div class="blog_detail">
+      <div class="container">
+        <div class="col-sm-12 col-lg-12">
+    
+          <div class="blog_detail_container">
+            
+            <div class="blog_show">
+                
+              <div class="blog_show_content">
+                <div class="blog_show_title">
+                  <br>
+                  Các loại phân bón và đặc điểm của từng loại
+                  <br>
+                  <br>
+                  
+
+                  1. Phân bón hữu cơ
+                </div>
+                <div class="blog_show_desc">
+                  
+                  Đây là loại phân bón quen thuộc và rất dễ mua. Sử dụng phân bón hữu cơ để chăm sóc cây cảnh là một lựa chọn rất kinh tế. Phân bón hữu cơ cung cấp đủ dinh dưỡng 
+                  cho cây như đa lượng, trung lượng và vi lượng. Bên cạnh đó, nó còn có một số chất có công dụng điều hòa sinh trưởng cho cây phát triển tốt.
+                  <br>
+                  Tuy nhiên, khi sử dụng phải bón số lượng lớn bởi hàm lưỡng dinh dưỡng trong phân bón hữu cơ thấp. Hơn nữa, bạn cũng phải tìm hiểu cách 
+                  bón phân hữu cơ đúng kỹ thuật để tránh gây ô nhiễm môi trường.
+                  <div class="blog_show_img">
+                   <img src="{{url_for('static',filename = 'image/phan-bon-huu-co.jpg')}}" >
+                  </div>
+                </div>
+
+                <div class="blog_show_title">
+                  <br>
+                  2.Phân bón vi sinh
+                </div>
+               
+                <div class="blog_show_desc">
+                  Phân bón vi sinh cũng là loại phân bón khá phổ biến. Đây là chế phẩm trong đó có chứa vi sinh vật sống có ích, vi sinh vật giải lân, vi sinh vật cố định đạm, vi sinh vật phân giải Kali…
+                  <br>
+                  <br>
+                  Phân bón vi sinh thường được dùng bón cho cây hoa, cây cảnh. Nó được nhiều người sử dụng bởi chứa các vi sinh vật có khả năng phân giải lân hữu cơ khó tiêu trong đất, nên cây cảnh dễ hấp thụ được.
+                  <div class="blog_show_img">
+                  </div>
+                </div>
+                   
+                   <div class="blog_show_title">
+                     <br>
+                     3.Phân xanh
+                   </div>
+                   <div class="blog_show_desc">
+                      Phân xanh là loại phân hữu cơ dùng các loại cây lá tươi bón trực tiếp vào đất  thông qua quá trình
+                      ủ vì vậy chỉ sử dụng để bón lót. Cây phân xanh thường được sử dụng là cây họ đậu: muồng, điền thanh, keo đậu, điên điển,...
+                      <br>
+                      <br>
+                      Cách sử dụng: tiến hành vùi cây phân xanh vào đất  khi cây bắt đầu ra hoa, bón lót trng thời gian làm đất
+                      <br>
+                   </div>
+                   <div class="blog_show_title">
+                      <br>
+                      4.Phân rác
+                   </div>
+                   <div clas="blog_show_desc">
+                     <br>
+                    4.1. Đặc điểm: Là phân hữu cơ được chế biến từ: cỏ dại, rác, thân lá cây xanh, rơm rạ…ủ với một số phân men như phân chuồng, lân, vôi… 
+                    đến khi mục thành phân (thành phần dinh dưỡng thấp hơn phân chuồng).
+                    <br>
+                    <br>
+                    4.2. Cách ủ: Nguyên liệu chính là phân rác 70%, cung cấp thêm đạm và Kali 2%, còn lại phân men (phân chuồng, lân, vôi). 
+                    Nguyên liệu được chặt ra thành đoạn ngắn 20-30cm xếp thành lớp cứ 30cm rắc một lớp vôi; trét bùn; ủ khoảng 20 ngày đảo lại rắc thêm phân men, xếp đủ cao trét bùn lại, để hở lỗ tưới nước thường xuyên; 
+                    ủ khoảng 60 ngày dùng bón lót, để lâu hơn khi phân hoai có thể dùng để bón thúc.
+                   </div>
+                   <div class="blog_show_img">
+                      <img src="{{url_for('static',filename = 'image/Lam-phan-tu-rac-thai-sinh-hoat.jpg')}}">
+                   </div>
+                   <div class="blog_show_title">
+                    <br>
+                    5.Phân sinh học
+                 </div>
+                 <div clas="blog_show_desc">
+                   <br>
+                   1. Đặc điểm: Là loại phân có nguồn gốc hữu cơ được sản xuất bằng công nghệ sinh học (như lên men vi sinh) và phối trộn thêm một số hoạt chất khác để làm tăng độ hữu hiệu của phân, hoặc khi bón vào đất sẽ tạo môi trường 
+                   cho các quá trình sinh học trong đất diễn ra thuận lợi góp phần làm tăng năng suất cây trồng
+                   <br>
+                   <br>
+                   2. Sử dụng: Phân sinh hóa hữu cơ được sản xuất ở dạng bột hoặc dạng lỏng; có thể phun lên lá hoặc bón gốc.
+                   <br>
+                 </div>
+                 <div class="blog_show_img">
+                   <img src="{{url_for('static',filename = 'image/phan-huu-co-vi-sinh-ga-co-do-thumb-1.png')}}">
+                   <br>
+
+                 </div>
+              </div>       
+            </div>
+            </div>
+      
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="location">
+        <div class="container">
+          
+              <div class="footer__contact">
+                <div class="body_footter">
+                <div class="left">
+                <p class="footer__contact-title">LIÊN HỆ VỚI CHÚNG TÔI</p>
+                <ul class="footer__contact-list">
+                  <li >
+                    <a class="footer__contact-address"> Tầng 6, toà nhà 254 Nguyễn Văn Linh, P.Thạch Gián, Q. Thanh
+                      Khê, Đà Nẵng</a>
+                  </li>
+                  <li >
+                      <a class="footer__contact-phone">(07) 6672 3591 </a>
+                    </li>
+                    <li >
+                      <a class="footer__contact-mail">
+                        lekhoa657@gmail.com
+                      </a>
+                    </li>
+                  </div>
+                
+                 <div class="right">
+                <p class="footer__contact-title">THÔNG TIN</p>
+                  <ul class="footer__shipping">
+                    <li>
+                      <a>Về chúng tôi</a>
+                    </li>
+                    <li>
+                      <a>Điều khoản &amp; Điều kiện</a>
+                    </li>
+                    <li>
+                      <a>Chính sách riêng tư</a>
+                    </li>
+                    
+                  </ul>
+                   </div>
+                   <div class="center">
+                    <p class="footer__contact-title">CHUYÊN MUC</p>
+                    <ul class="footer__center">
+                      <li>
+                        <a>hỏi đáp</a>
+                      </li>
+                      <li>
+                        <a class="khoa" href="">
+                          <i class="fab fa-facebook"></i>
+                        </a>
+                      </li>
+                      
+                      
+                    </ul>
+                  
+                   </div>
+              </div>
+                  <div class="col-sm-12 col-md-8">
+                    <p class="footer__extend-text">
+                      Copyright © Your Website 2022
+                    </p>
+                  </div>
+                  <div className="col-sm-12 col-md-4">
+                    <div className="footer__extend-img d-flex justify-content-end">
+                      <img src={footer_extend} alt="" />
+                    </div>
+              </div>
+              
+                  
+                </div>
+              </div>  
+              
+             
+          </div> 
+    
+</body>
+</html>
