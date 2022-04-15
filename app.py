@@ -236,11 +236,12 @@ def login():
             password =  useraccountcheck.Password
             if str(request.form['password']) != str(password):
                 error = 'Sai tên đăng nhập hoặc mật khẩu !!!.'
+            
             else:
                 return redirect("./homepage")
         else:
             error = 'Sai tên đăng nhập hoặc mật khẩu !!!.'
-    return render_template('login.html')
+    return render_template('login.html',error = error)
 
 @app.route('/signup', methods = ['POST', 'GET'])
 def register():
