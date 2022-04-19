@@ -19,16 +19,20 @@ from datetime import datetime
 from tensorflow.keras.applications.resnet50 import preprocess_input
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing import image
+from werkzeug.security import generate_password_hash ,check_password_hash
+from flask_bcrypt import Bcrypt
 
 # Flask utils
-from flask import Flask, redirect, url_for, request, render_template,flash
+from flask import Flask, redirect, url_for, request, render_template,flash,session
 from werkzeug.utils import secure_filename
 #from gevent.pywsgi import WSGIServer
 
 # Define a flask app
 app = Flask(__name__)
+app.secret_key = "aaa"
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///mydb.db'
 db = SQLAlchemy(app)
+bcrypt = Bcrypt(app)
 user_name = ""
 
 class Accounts(db.Model):
@@ -74,7 +78,7 @@ class Cart(db.Model):
 # Model saved with Keras model.save()
 MODEL_PATH ='best.hdf5'
 classes = ['Pepper__bell___Bacterial_spot','Pepper__bell___healthy','Potato___Early_blight'
-        ,'Potato___healthy','Potato___Late_blight','Tomato__Target_Spot','Tomato__Tomato_mosaic_virus'
+        ,'Potato___Late_blight','Potato___healthy','Tomato__Target_Spot','Tomato__Tomato_mosaic_virus'
         ,'Tomato__Tomato_YellowLeaf__Curl_Virus','Tomato_Bacterial_spot','Tomato_Early_blight','Tomato_healthy'
         ,'Tomato_Late_blight','Tomato_Leaf_Mold','Tomato_Septoria_leaf_spot','Tomato_Spider_mites_Two_spotted_spider_mite' ]
 # Load your trained model
@@ -138,6 +142,7 @@ def index():
 
 @app.route('/homepage')
 def homepage():
+    username = user_name[-1]
     # Main page
     return render_template('homepage.html')
 
@@ -170,6 +175,12 @@ def manageAccounts():
     accounts = Accounts.query.order_by(Accounts.Date_Created).all()
     return render_template('manageAccount.html',accounts = accounts)
 
+@app.route("/manageproduct")
+def manageProduct():
+    products = Products.query.order_by(Products.Product_Name).all()
+    return render_template('manageProduct.html',products = products)
+
+
 @app.route('/managetopic')
 def manageTopic():
     topics = Topic.query.order_by(Topic.Date_Created).all()
@@ -197,9 +208,9 @@ def delete_topic(Id_Topic):
     except:
         return 'There was a problem deleting that task'
 
-@app.route('/managetopic')
+@app.route('/manageblog')
 def managetopic():
-    return render_template('manageTopic.html')
+    return render_template('manageBlog.html')
 
 @app.route('/product')
 def product():
@@ -224,6 +235,8 @@ def upload():
         return result
     return None
 
+user_name = ['']
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     error = None
@@ -233,15 +246,31 @@ def login():
             return redirect("./Admin")
         useraccountcheck = Accounts.query.filter_by(User_Account = str(request.form['useraccount'])).first()
         if useraccountcheck is not None: 
-            password =  useraccountcheck.Password
-            if str(request.form['password']) != str(password):
-                error = 'Sai tên đăng nhập hoặc mật khẩu !!!.'
+            # password =  useraccountcheck.Password
+            # if str(request.form['password']) != str(password):
+            #     error = 'Sai tên đăng nhập hoặc mật khẩu !!!.'
             
-            else:
+            # else:
+            #     user_name.append(str(useraccountcheck.User_Name))
+            #     session["user_name"] = user_name
+            #     return redirect("./homepage")
+            if bcrypt.check_password_hash( useraccountcheck.Password, str(request.form['password'])):
+                user_name.append(str(useraccountcheck.User_Name))
+                session["user_name"] = user_name
                 return redirect("./homepage")
+            else:
+                error = 'Sai tên đăng nhập hoặc mật khẩu !!!.'
+                
         else:
-            error = 'Sai tên đăng nhập hoặc mật khẩu !!!.'
+            error = 'Không đc để trống !!!.'
     return render_template('login.html',error = error)
+
+
+@app.route('/logout', methods=['GET', 'POST'])
+def logout():
+    session['logged_in'] = False
+    return redirect('./login')
+
 
 @app.route('/signup', methods = ['POST', 'GET'])
 def register():
@@ -255,7 +284,8 @@ def register():
         repassword = request.form['repassword']
         if useraccountcheck is None:
             if repassword == password : 
-                new_user = Accounts(User_Name = username,Password = password,User_Account = useraccount,Date_Created = now)
+                hashed_passwword =bcrypt.generate_password_hash(password)
+                new_user = Accounts(User_Name = username,Password = hashed_passwword,User_Account = useraccount,Date_Created = now)
                 db.session.add(new_user)
                 db.session.commit()
                 return redirect('/login')
@@ -263,6 +293,8 @@ def register():
                 error = 'Mật khẩu không trùng khớp!!!'
         else:
             error = "User account exist!"
+    
+        
     return render_template('signup.html',error = error)
 
 
@@ -328,6 +360,8 @@ def comment(Id_Topic):
         return render_template('post_detail.html', comments=comments,topic = topic)
         #error = "Lỗi ko thêm comment được!!!"
     return render_template('post_detail.html')
+
+    
 
 if __name__ == '__main__':
     app.run(host="localhost",port=5001,debug=True)

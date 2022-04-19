@@ -24,21 +24,22 @@
                             </div>
                             <div class="form-group">
                                 
-                                <input type="text" placeholder="mật khẩu" name="password" id="password" class="form-control">
+                                <input type="password" placeholder="mật khẩu" name="password" id="password" class="form-control">
                             </div>
+                            {% if error %}
+                            <p class="error"><strong></strong> {{ error }}
+                         {% endif %}
                             <div class="form-group">
                                 <a href="#">Quên mật khẩu ?</a><br>            
                             </div>
                             <div class="d-flex justify-content-center">
                                 <button type="submit" value = "Login" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Login</button>
                               </div>
-                              {% if error %}
-                                <p class="error"><strong></strong> {{ error }}<br>
-                            {% endif %}
 
                             <div id="register-link" class="text-right">
                                 <a href="/signup" class="text-info">Register here</a>
                               </div>
+                             
                             
                             
 
