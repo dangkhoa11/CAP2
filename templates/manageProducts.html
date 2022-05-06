@@ -185,7 +185,7 @@
                 <div class="side-nav-inner">
                     <ul class="side-nav-menu scrollable">
                         <li class="nav-item dropdown">
-                            <a href = "./Admin">
+                            <a href = "../Admin">
                                 <span class="icon-holder">
                                     <i class="anticon anticon-dashboard"></i>
                                 </span>
@@ -265,7 +265,7 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a href="./manageAccounts">Quản Lý Tài Khoản</a>
+                                    <a href="../manageAccounts">Quản Lý Tài Khoản</a>
                                 </li>
                                 <li>
                                     <a href="basic-table.html">Quản Lý Danh Mục</a>
@@ -293,7 +293,7 @@
                                     <a href="chartist.html">Blog</a>
                                 </li>
                                 <li>
-                                    <a href="./managetopic">Topic</a>
+                                    <a href="../managetopic">Topic</a>
                                 </li>
                             </ul>
                         </li>
@@ -309,62 +309,79 @@
                 <!-- Content Wrapper START -->
                 <div class="main-content">
                     <div class="page-header">
+                        <h2 class="header-title">Products List</h2>
                         <div class="header-sub-title">
                             <nav class="breadcrumb breadcrumb-dash">
-                                <a class="breadcrumb-item"><i class="anticon anticon-home m-r-5"></i>Home</a>
-                                <span class="breadcrumb-item active">Accounts List</span>
+                                <a href="#" class="breadcrumb-item"><i class="anticon anticon-home m-r-5"></i>Home</a>
+                                <a class="breadcrumb-item" href="#">Products List</a>
                             </nav>
                         </div>
                     </div>
                     <div class="card">
                         <div class="card-body">
-                            <div class="row m-b-30">
-                                <div class="col-lg-8">
-                                    <div class="d-md-flex">
-                                        <div class="m-b-10 m-r-15">
-                                            <select class="custom-select" id ="idrole" name="idrole" style="min-width: 220px;">
-                                                <option value="0" disabled selected>Choose Role</option>
-                                            </select>
-                                        </div>
-                                        <div class="m-b-10">
-                                            <select class="custom-select" style="min-width: 220px;">
-                                                <option value="0"  id ="idactive" name="idactive" disabled selected>Choose Active</option>
-                                            </select>
+                            <form method = "post">
+                                <div class="row m-b-30">
+                                    <div class="col-lg-8">
+                                        <div class="d-md-flex">
+                                            <div class="m-b-10 m-r-15">
+                                                <!-- <select name = "category" class="custom-select" style="min-width: 180px;"  action="{{ url_for('manageProducts') }}">
+                                                    <option selected value="all"><a href="{{url_for('manageProducts')}}">All</a></option>
+                                                    <option value="Seeds"><a href="{{url_for('manageProducts')}}">Seeds</a></option>
+                                                    <option value="Medicine"><a href="{{url_for('manageProducts')}}">Medicine</a></option>
+                                                </select> -->
+                                            </div>
                                         </div>
                                     </div>
+                                    <div class="col-lg-4 text-right">
+                                        <button class="btn btn-primary">
+                                            <i class="anticon anticon-plus-circle m-r-5"></i>
+                                            <span>Add Product</span>
+                                        </button>
+                                    </div>
                                 </div>
-                            </div>
+                            </form>
                             <div class="table-responsive">
                                 <table class="table table-hover e-commerce-table">
                                     <thead>
                                         <tr>
                                             <th>ID</th>
-                                            <th>ID Account</th>
-                                            <th>Title</th>
-                                            <th>Description</th>
-                                            <th>Date Created</th>
+                                            <th>Image</th>
+                                            <th>Category</th>                                           
+                                            <th>Price</th>
+                                            <th>Quantity</th>
                                             <th></th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {% for topic in topics %}
-                                            <tr>
-                                                <td>{{topic.Id_Topic}}</td>
-                                                <td>{{topic.Id_Account}}</td>
-                                                <td>{{topic.Title}}</td>
-                                                <td><textarea class="form-control" name = "description" id="exampleFormControlTextarea1" rows="5">{{topic.Description}}</textarea></td>
-                                                <td>{{topic.Date_Created.date()}}</td>
-                                                <td>
-                                                    <a class="btn btn-warning m-r-5" >Update</a> |
-                                                    <a class="btn btn-info m-r-5" href = "./deleteTopic/{{topic.Id_Topic}}">Delete </a>
-                                                </td>
-                                            </tr>
-                                        {% endfor %}
+                                        {%for product in products%}
+                                        <tr>
+                                            <td>
+                                                {{product.Id_product}}
+                                            </td>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <img class="img-fluid rounded" src="{{product.Link_Image}}" style="max-width: 60px" alt="">
+                                                    <h6 class="m-b-0 m-l-10">{{product.Product_Name}}</h6>
+                                                </div>
+                                            </td>
+                                            <td>{{product.Category}}</td>
+                                            <td>${{product.Price}}.00</td>
+                                            <td>{{product.Quantity}}</td>
+                                            <td class="text-right">
+                                                <button class="btn btn-icon btn-hover btn-sm btn-rounded pull-right">
+                                                    <i class="anticon anticon-edit"></i>
+                                                </button>
+                                                <button class="btn btn-icon btn-hover btn-sm btn-rounded">
+                                                    <i class="anticon anticon-delete"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        {%endfor%}
                                     </tbody>
                                 </table>
                             </div>
                         </div>
-                    </div>                 
+                    </div>
                 </div>
                 <!-- Content Wrapper END -->
                 <!-- Footer START -->
@@ -555,8 +572,4 @@
 
     <!-- Core JS -->
     <script src="{{url_for('static',filename ='Adminassets/js/app.min.js')}}"></script>
-
-
 </body>
-
-</html>

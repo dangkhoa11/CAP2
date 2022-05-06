@@ -160,13 +160,13 @@
                                         <i class="anticon font-size-10 anticon-right"></i>
                                     </div>
                                 </a>
-                                <a href="javascript:void(0);" class="dropdown-item d-block p-h-15 p-v-10">
+                                <a href="./logout" class="dropdown-item d-block p-h-15 p-v-10">
                                     <div class="d-flex align-items-center justify-content-between">
                                         <div>
                                             <i class="anticon opacity-04 font-size-16 anticon-logout"></i>
-                                            <span class="m-l-10" href="./logout">Logout</span>
+                                            <span class="m-l-10" >Logout</span>
                                         </div>
-                                        <i class="anticon font-size-10 anticon-right"></i>
+                                        <i class="anticon font-size-10 anticon-right "></i>
                                     </div>
                                 </a>
                             </div>
@@ -204,7 +204,7 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a href="app-chat.html">Danh Sách Đơn Hàng</a>
+                                    <a href="../manageOrders">Danh Sách Đơn Hàng</a>
                                 </li>
                             </ul>
                         </li>
@@ -228,10 +228,10 @@
                                     </a>
                                     <ul class="dropdown-menu">
                                         <li>
-                                            <a href="app-project-list.html">Nông Sản</a>
+                                            <a href="../manageProducts/Seeds">Nông Sản</a>
                                         </li>
                                         <li>
-                                            <a href="app-project-details.html">Thuốc</a>
+                                            <a href="../manageProducts/Medicine">Thuốc</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -265,17 +265,9 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a asp-area="Admin" asp-controller="AdminAccounts" asp-action="Index">Quản Lý Tài Khoản</a>
+                                    <a href="./manageAccounts">Quản Lý Tài Khoản</a>
                                 </li>
-                                <li>
-                                    <a href="basic-table.html">Quản Lý Danh Mục</a>
-                                </li>
-                                <li>
-                                    <a asp-area="Admin" asp-controller="AdminRoles" asp-action="Index">Quản Lý Quyền Truy Cập</a>
-                                </li>
-                                <li>
-                                    <a href="data-table.html">Quản Lý Tỉnh Thành</a>
-                                </li>
+                                
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
@@ -283,23 +275,17 @@
                                 <span class="icon-holder">
                                     <i class="anticon anticon-pie-chart"></i>
                                 </span>
-                                <span class="title">Quản Lý Website</span>
+                                <span class="title">Quản Lý Tin Tức</span>
                                 <span class="arrow">
                                     <i class="arrow-icon"></i>
                                 </span>
                             </a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a href="./manageblog">Blog</a>
+                                    <a href="chartist.html">Blog</a>
                                 </li>
                                 <li>
                                     <a href="./managetopic">Topic</a>
-                                </li>
-                                <li>
-                                    <a href="/manageAccounts">User Accounts</a>
-                                </li>
-                                <li>
-                                    <a href="/manageproduct">Products</a>
                                 </li>
                             </ul>
                         </li>
