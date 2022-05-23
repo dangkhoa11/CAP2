@@ -185,7 +185,7 @@
                 <div class="side-nav-inner">
                     <ul class="side-nav-menu scrollable">
                         <li class="nav-item dropdown">
-                            <a href = "./Admin">
+                            <a href = "../Admin">
                                 <span class="icon-holder">
                                     <i class="anticon anticon-dashboard"></i>
                                 </span>
@@ -204,7 +204,7 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a href="app-chat.html">Danh Sách Đơn Hàng</a>
+                                    <a href="./manageOrders">Danh Sách Đơn Hàng</a>
                                 </li>
                             </ul>
                         </li>
@@ -228,31 +228,16 @@
                                     </a>
                                     <ul class="dropdown-menu">
                                         <li>
-                                            <a href="app-project-list.html">Nông Sản</a>
+                                            <a href="../manageProducts/Seeds">Nông Sản</a>
                                         </li>
                                         <li>
-                                            <a href="app-project-details.html">Thuốc</a>
+                                            <a href="../manageProducts/Medicine">Thuốc</a>
                                         </li>
                                     </ul>
                                 </li>
                             </ul>
                         </li>
-                        <li class="nav-item dropdown">
-                            <a class="dropdown-toggle" href="javascript:void(0);">
-                                <span class="icon-holder">
-                                    <i class="anticon anticon-hdd"></i>
-                                </span>
-                                <span class="title">Quản Lý Khách Hàng</span>
-                                <span class="arrow">
-                                    <i class="arrow-icon"></i>
-                                </span>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <a>Danh Sách Khách Hàng</a>
-                                </li>
-                            </ul>
-                        </li>
+                        
                         <li class="nav-item dropdown">
                             <a class="dropdown-toggle" href="javascript:void(0);">
                                 <span class="icon-holder">
@@ -265,17 +250,9 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a asp-area="Admin" asp-controller="AdminAccounts" asp-action="Index">Quản Lý Tài Khoản</a>
+                                    <a href="../manageAccounts">Quản Lý Tài Khoản</a>
                                 </li>
-                                <li>
-                                    <a href="basic-table.html">Quản Lý Danh Mục</a>
-                                </li>
-                                <li>
-                                    <a asp-area="Admin" asp-controller="AdminRoles" asp-action="Index">Quản Lý Quyền Truy Cập</a>
-                                </li>
-                                <li>
-                                    <a href="data-table.html">Quản Lý Tỉnh Thành</a>
-                                </li>
+                                
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
@@ -290,13 +267,10 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a href="./manageblog">Blog</a>
+                                    <a href="chartist.html">Blog</a>
                                 </li>
                                 <li>
-                                    <a href="./managetopic">Topic</a>
-                                </li>
-                                <li>
-                                    <a href="/manageAccounts">User Accounts</a>
+                                    <a href="../managetopic">Topic</a>
                                 </li>
                             </ul>
                         </li>
@@ -312,64 +286,70 @@
                 <!-- Content Wrapper START -->
                 <div class="main-content">
                     <div class="page-header">
+                        <h2 class="header-title">Products List</h2>
                         <div class="header-sub-title">
                             <nav class="breadcrumb breadcrumb-dash">
-                                <a class="breadcrumb-item"><i class="anticon anticon-home m-r-5"></i>Home</a>
-                                <span class="breadcrumb-item active">Accounts List</span>
+                                <a href="#" class="breadcrumb-item"><i class="anticon anticon-home m-r-5"></i>Home</a>
+                                <a class="breadcrumb-item" href="#">Products List</a>
                             </nav>
                         </div>
                     </div>
                     <div class="card">
                         <div class="card-body">
-                            <div class="row m-b-30">
-                                <div class="col-lg-8">
-                                    <div class="d-md-flex">
-                                        <div class="m-b-10 m-r-15">
-                                            <select class="custom-select" id ="idrole" name="idrole" style="min-width: 220px;">
-                                                <option value="0" disabled selected>Choose Role</option>
-                                            </select>
-                                        </div>
-                                        <div class="m-b-10">
-                                            <select class="custom-select" style="min-width: 220px;">
-                                                <option value="0"  id ="idactive" name="idactive" disabled selected>Choose Active</option>
-                                            </select>
+                            <form method = "post">
+                                <div class="row m-b-30">
+                                    <div class="col-lg-8">
+                                        <div class="d-md-flex">
+                                            <div class="m-b-10 m-r-15">
+                                                
+                                            </div>
                                         </div>
                                     </div>
+                                   
                                 </div>
-                            </div>
+                            </form>
                             <div class="table-responsive">
                                 <table class="table table-hover e-commerce-table">
                                     <thead>
                                         <tr>
                                             <th>ID</th>
-                                            <th>Product Name</th>
+                                            <th>Image</th>
+                                            <th>Category</th>                                           
                                             <th>Price</th>
                                             <th>Quantity</th>
-                                            <th>Date</th>
                                             <th></th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {% for account in accounts %}
-                                            <tr>
-                                                <td>{{product.Id_Product}}</td>
-                                                <td>{{product.Product_Name}}</td>
-                                                <td>{{product.Price}}</td>
-                                                <td>{{product.Qauntity}}</td>
-                                                <td>{{product.Date}}</td>
-                                                <td>
-                                                    <a class="btn btn-warning m-r-5" >Update</a> |
-                                                    <a class="btn btn-info m-r-5" href = "./deleteAccount/{{account.Id_Account}}">Delete </a>
-                                                </td>
-                                            </tr>
-                                        {% endfor %}
+                                        {%for product in products%}
+                                        <tr>
+                                            <td>
+                                                {{product.Id_product}}
+                                            </td>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <img class="img-fluid rounded" src="{{product.Link_Image}}" style="max-width: 60px" alt="">
+                                                    <h6 class="m-b-0 m-l-10">{{product.Product_Name}}</h6>
+                                                </div>
+                                            </td>
+                                            <td>{{product.Category}}</td>
+                                            <td>${{product.Price}}.00</td>
+                                            <td>{{product.Quantity}}</td>
+                                            <td class="text-right">
+                                                <button class="btn btn-icon btn-hover btn-sm btn-rounded pull-right">
+                                                    <i class="anticon anticon-edit"></i>
+                                                </button>
+                                                <button class="btn btn-icon btn-hover btn-sm btn-rounded">
+                                                    <i class="anticon anticon-delete"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        {%endfor%}
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                     </div>
-                    
-                    
                 </div>
                 <!-- Content Wrapper END -->
                 <!-- Footer START -->
@@ -387,7 +367,7 @@
             </div>
             <!-- Page Container END -->
             <!-- Search Start-->
-            <!-- <div class="modal modal-left fade search" id="search-drawer">
+            <div class="modal modal-left fade search" id="search-drawer">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header justify-content-between align-items-center">
@@ -488,10 +468,10 @@
                         </div>
                     </div>
                 </div>
-            </div> -->
+            </div>
             <!-- Search End-->
             <!-- Quick View START -->
-            <!-- <div class="modal modal-right fade quick-view" id="quick-view">
+            <div class="modal modal-right fade quick-view" id="quick-view">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header justify-content-between align-items-center">
@@ -545,7 +525,7 @@
                         </div>
                     </div>
                 </div>
-            </div> -->
+            </div>
             <!-- Quick View END -->
         </div>
     </div>
@@ -560,8 +540,4 @@
 
     <!-- Core JS -->
     <script src="{{url_for('static',filename ='Adminassets/js/app.min.js')}}"></script>
-
-
 </body>
-
-</html>

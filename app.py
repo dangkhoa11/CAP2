@@ -92,6 +92,11 @@ class Order(db.Model):
     Product_Name = db.Column(db.String(2000))
     Total = db.Column(db.Integer)
     Date_Created = db.Column(db.DateTime, default=datetime.utcnow)
+    Name = db.Column(db.String(100))
+
+class Benh(db.Model):
+    Ten_benh = db.Column(db.String(200),primary_key=True)
+    Cach_chua = db.Column(db.String(2000))
 
 # Model saved with Keras model.save()
 MODEL_PATH = "best.hdf5"
@@ -99,8 +104,8 @@ classes = [
     "Pepper__bell___Bacterial_spot",
     "Pepper__bell___healthy",
     "Potato___Early_blight",
-    "Potato___healthy",
     "Potato___Late_blight",
+    "Potato___healthy",
     "Tomato__Target_Spot",
     "Tomato__Tomato_mosaic_virus",
     "Tomato__Tomato_YellowLeaf__Curl_Virus",
@@ -129,9 +134,18 @@ def model_predict(img_path, model):
 
     img = cv2.imread(img_path)
     pred = model.predict(preprocess_image(img))
-    result = classes[np.argmax(pred)]        
+    result = classes[np.argmax(pred)] 
+
+    cach_chua = Benh.query.filter_by(Cach_chua=str(result)).first()
     
-    return str(result)
+    
+    
+    
+    return str(result)#,str(cach_chua)
+
+
+
+
 
 
 @app.route("/single-product")
@@ -182,6 +196,11 @@ def detail2():
     username = user_name[-1]
     return render_template('blog3.html',username=username)
 
+@app.route('/blog4')
+def detail3():
+    username = user_name[-1]
+    return render_template('blog4.html',username=username)
+
 @app.route("/checkout", methods=["GET", "POST"])
 def checkout():
     username = user_name[-1]
@@ -202,12 +221,14 @@ def checkout():
         address = request.form["address"]
         email = request.form["email"]
         phone = request.form["phone"]
+        name = request.form["fullname"]
         new_order = Order(
             City=str(city),
-            Id_Account=str(account.Id_Account),
+            #Id_Account=str(account.Id_Account),
             Address=str(address),
             Email=str(email),
             Phone=str(phone),
+            Name = str(name),
             Product_Name=list_product,
             Total=sum,
             Date_Created=datetime.now(),
@@ -235,10 +256,12 @@ def manageOrders():
     return render_template("manageOrder.html", orders=orders)
 
 
+
 @app.route("/manageProducts")
 def manageProducts():
     products = Products.query.filter_by(Category="Seeds").all()
     return render_template("manageProducts.html", products=products)
+
 
 
 @app.route("/manageProducts/<string:Category>")
@@ -260,6 +283,17 @@ def delete_account(Id_Account):
         db.session.delete(Account_to_delete)
         db.session.commit()
         return redirect('/manageAccounts')
+    except:
+        return 'There was a problem deleting that task'
+
+@app.route('/deleteProduct/<string:Image>')
+def delete_product(Id):
+    product_to_delete = Accounts.query.get_or_404(Image)
+
+    try:
+        db.session.delete(product_to_delete)
+        db.session.commit()
+        return redirect('/cart')
     except:
         return 'There was a problem deleting that task'
 
@@ -304,6 +338,7 @@ def upload():
 
 user_name = ['']
 
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     error = None
@@ -313,14 +348,6 @@ def login():
             return redirect("./Admin")
         useraccountcheck = Accounts.query.filter_by(User_Account = str(request.form['useraccount'])).first()
         if useraccountcheck is not None: 
-            # password =  useraccountcheck.Password
-            # if str(request.form['password']) != str(password):
-            #     error = 'Sai tên đăng nhập hoặc mật khẩu !!!.'
-            
-            # else:
-            #     user_name.append(str(useraccountcheck.User_Name))
-            #     session["user_name"] = user_name
-            #     return redirect("./homepage")
             if bcrypt.check_password_hash( useraccountcheck.Password, str(request.form['password'])):
                 user_name.append(str(useraccountcheck.User_Name))
                 return redirect("./homepage")
@@ -412,7 +439,7 @@ def uptopic():
     if request.method == 'POST':
         title = request.form['title']
         decription = request.form['description']
-        new_topic = Topic(Id_Account = 1,Title = title,Description=decription, Date_Created = now)
+        new_topic = Topic(Id_Account = 4,Title = title,Description=decription, Date_Created = now)
         db.session.add(new_topic)
         db.session.commit()
         return redirect('/topic')
@@ -446,4 +473,5 @@ def comment(Id_Topic):
     
 
 if __name__ == '__main__':
+   
     app.run(host="localhost",port=5001,debug=True)

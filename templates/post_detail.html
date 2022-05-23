@@ -79,13 +79,17 @@
                     </fieldset>
                 </form>
 
-                <h3>4 Comments</h3>
+                
                 {% for comment in comments %}
                 <!-- COMMENT - START -->
                   <div class="media">
                       <a class="pull-left" href="#"><img class="media-object" src="https://bootdey.com/img/Content/avatar/avatar1.png" alt=""></a>
                       <div class="media-body">
+                           {%if username%}
+                          <h4 class="media-heading">{{username}}</h4>
+                          {%else%}
                           <h4 class="media-heading">John Doe</h4>
+                          {%endif%}
                           <p> {{comment.Description}} </p>
                           <ul class="list-unstyled list-inline media-detail pull-left">
                               <li><i class="fa fa-calendar"></i>{{comment.Date_Created.date()}}</li>

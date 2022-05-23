@@ -204,7 +204,7 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a href="app-chat.html">Danh Sách Đơn Hàng</a>
+                                    <a href="./manageOrders">Danh Sách Đơn Hàng</a>
                                 </li>
                             </ul>
                         </li>
@@ -237,22 +237,7 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="nav-item dropdown">
-                            <a class="dropdown-toggle" href="javascript:void(0);">
-                                <span class="icon-holder">
-                                    <i class="anticon anticon-hdd"></i>
-                                </span>
-                                <span class="title">Quản Lý Khách Hàng</span>
-                                <span class="arrow">
-                                    <i class="arrow-icon"></i>
-                                </span>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <a>Danh Sách Khách Hàng</a>
-                                </li>
-                            </ul>
-                        </li>
+                       
                         <li class="nav-item dropdown">
                             <a class="dropdown-toggle" href="javascript:void(0);">
                                 <span class="icon-holder">
@@ -267,15 +252,7 @@
                                 <li>
                                     <a href="./manageAccounts">Quản Lý Tài Khoản</a>
                                 </li>
-                                <li>
-                                    <a href="basic-table.html">Quản Lý Danh Mục</a>
-                                </li>
-                                <li>
-                                    <a asp-area="Admin" asp-controller="AdminRoles" asp-action="Index">Quản Lý Quyền Truy Cập</a>
-                                </li>
-                                <li>
-                                    <a href="data-table.html">Quản Lý Tỉnh Thành</a>
-                                </li>
+                                
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
@@ -339,8 +316,10 @@
                                     <thead>
                                         <tr>
                                             <th>ID</th>
-                                            <th>Customer ID</th>
                                             <th>Product List</th>
+                                            <th>Phone</th>
+                                            <th>Address</th>
+                                            <th>Full Name</th> 
                                             <th>Total</th>
                                             <th>Date Created</th>
                                             <th></th>
@@ -350,8 +329,10 @@
                                         {% for order in orders %}
                                             <tr>
                                                 <td>{{order.Id_Order}}</td>
-                                                <td>{{order.Id_Account}}</td>
                                                 <td><textarea class="form-control" name = "description" id="exampleFormControlTextarea1" rows="5">{{order.Product_Name}}</textarea></td>
+                                                <td>{{order.Phone}}</td>
+                                                <td>{{order.Address}}</td>
+                                                <td>{{order.Name}}</td> 
                                                 <td>${{order.Total}}.0</td>
                                                 <td>{{order.Date_Created.date()}}</td>
                                                 <td>
